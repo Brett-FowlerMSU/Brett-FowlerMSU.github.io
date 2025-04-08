@@ -2,11 +2,9 @@
 <head>
   <title>My Map</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-        crossorigin=""/>
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-          crossorigin=""></script>
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
   <style>
     #map { 
@@ -22,13 +20,10 @@
   <div id="map"></div>
 
   <script>
-    
-    var map = L.map('map').setview([39.37994, -77.15616]});
+    // Initialize map
+    var map = L.map('map').setView([39.37994, -77.15616], 12); 
 
-    
-    map.setZoom(12);
-
-    
+    // Set default base layer (OpenStreetMap)
     var defaultBase = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'
     }).addTo(map);
@@ -40,18 +35,21 @@
     map.on('click', function(e) {
       alert("You clicked the map at " + e.latlng);
     });
-  var marker = L.marker([39.37958,-77.15610]).addTo(map);
-  var circle = L.circle([39.37953, -77.15669], {
-    color: 'blue',
-    fill color: '#000ff',
-    fillOpacity: 0.5,
-    radius: 500
-}).addTo(map);
+
+    // Add additional markers, circle, and polygon
+    var marker = L.marker([39.37958, -77.15610]).addTo(map);
+    var circle = L.circle([39.37953, -77.15669], {
+      color: 'blue',
+      fillColor: '#0000ff', 
+      fillOpacity: 0.5,
+      radius: 500
+    }).addTo(map);
+
     var polygon = L.polygon([
-    [39.38043, -77.15712],
-    [39.38064, -77.15636],
-    [39.37911, -77.15626]
-]).addTo(map);
+      [39.38043, -77.15712],
+      [39.38064, -77.15636],
+      [39.37911, -77.15626]
+    ]).addTo(map);
   </script>
 </body>
 </html>
