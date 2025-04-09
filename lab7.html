@@ -25,6 +25,7 @@
 
     
     var defaultBase = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+      maxZoom: 20,
       attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
@@ -40,8 +41,8 @@
     var circle = L.circle([39.37953, -77.15669], {
       color: 'blue',
       fillColor: '#0000ff', 
-      fillOpacity: 0.5,
-      radius: 500
+      fillOpacity: 0.25,
+      radius: 200
     }).addTo(map);
     circle.bindPopup("This is prospect park");
     
