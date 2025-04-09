@@ -38,18 +38,22 @@
 
     // Add additional markers, circle, and polygon
     var marker = L.marker([39.37958, -77.15610]).addTo(map);
+    marker.bindPopup("This is the dock"); 
+    
     var circle = L.circle([39.37953, -77.15669], {
       color: 'blue',
       fillColor: '#0000ff', 
       fillOpacity: 0.5,
       radius: 500
     }).addTo(map);
-
-    var polygon = L.polygon([
+    circle.bindPopup("This is prospect park");
+    
+      var polygon = L.polygon([
       [39.38043, -77.15712],
       [39.38064, -77.15636],
       [39.37911, -77.15626]
     ]).addTo(map);
+    polygon.bindPopup("This circle is part of mount airy maryland");
   </script>
 </body>
 </html>
