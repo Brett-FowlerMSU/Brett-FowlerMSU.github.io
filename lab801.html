@@ -50,7 +50,7 @@
   <script>
     $(document).ready(function() {
       // Create the base map
-      map = L.map('map').setView([0, 0], 10); 
+      var map = L.map('map').setView([0, 0], 10); 
 
       // Base layers
       var OSMTiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -77,15 +77,15 @@
 
       var layerControl = L.control.layers(baseMaps, null).addTo(map);
 
-      // Add the Denver ACS data
+      // Add the Denver ACS data (with corrected filename)
       $.getJSON('./acs_denver_2021.geojson', function(data) {
         var acsDenver2021Layer = L.geoJSON(data).addTo(map);
         
         // Pan to the center of the data
-        map.panTo(acs_Denver_2021Layer.getBounds().getCenter());
+        map.panTo(acsDenver2021Layer.getBounds().getCenter());
 
         // Add the layer to the control
-        layerControl.addOverlay(acs_Denver_2021Layer, "Census 2021");
+        layerControl.addOverlay(acsDenver2021Layer, "Census 2021");
       });
 
       // Add remote DRCOG data
@@ -96,13 +96,15 @@
     });
   </script>
 </head>
-
 <body>
   <div id="header">
     <h1><a href="https://www.census.gov/programs-surveys/acs">Denver 2021 American Community Survey (Census) data</a></h1>
     <p>Data from <a href="https://opendata-geospatialdenver.hub.arcgis.com/maps/619c7f836b6e4188b0e0f0458aecba26">Denver Open Data Catalog</a></p>
   </div>
 
+  <div id="map"></div>
+</body>
+</html>
   <div id="map"></div>
 </body>
 </html>
