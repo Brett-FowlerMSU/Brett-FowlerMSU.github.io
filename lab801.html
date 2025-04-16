@@ -85,7 +85,8 @@
       $.getJSON('./acsdenver2021.geojson', function (data) {
       // convert the file into a layer
 	      var acsDenver2021Layer = L.geoJSON(data).addTo(map);
-
+	// Wait for layer to be added before panning to Denver
+	map.once('layeradd', function () {
        // move the map to the area of the data
         map.panTo(acsDenver2021Layer.getBounds().getCenter());
 	// add the layer to the layercontrol
