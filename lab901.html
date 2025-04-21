@@ -77,9 +77,32 @@
 
       var layerControl = L.control.layers(baseMaps, null).addTo(map);
 
+    // define a function to style my chlorepleth map
+      function style1 (feature) {
+        d = feature.properties.PCT_POVERTY;
+        answer = d > 30 ? '#f1eef6' :
+                  d > 20 ? '#d0d1e6' :
+                  d > 15 ? '#a6bddb' :
+                  d > 10 ? '#74a9cf' :
+                  d > 5 ? '#3690c0' :
+                  d > 3 ? '#0570b0' :
+                  d > 1 ? '#034e7b' :
+                  '#FFEDAO' ;
+        styleReturn = {
+          fillColor : answer,
+          weight : 1,
+          opacity: 1,
+          color : 'white',
+          dashArray : '3',
+          fillOpacity : 0.7
+        };
+        return styleReturn;
+       }
+      
       // Add the Denver ACS data (with corrected filename)
       $.getJSON('./acs_denver_2021.geojson', function(data) {
-        var acsDenver2021Layer = L.geoJSON(data).addTo(map);
+        var acsDenver2021Layer = L.geoJSON(data,
+                                           {style:style1}).addTo(map);
         
         // Pan to the center of the data
         map.panTo(acsDenver2021Layer.getBounds().getCenter());
