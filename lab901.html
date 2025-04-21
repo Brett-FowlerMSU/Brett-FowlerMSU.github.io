@@ -79,7 +79,7 @@
 
     // define a function to style my chlorepleth map
       function style1 (feature) {
-        d = feature.properties.PCT_TWOORMORE_RACES;
+        d = feature.properties.PCT_NATIVEAM;
         answer = d > 30 ? '#f1eef6' :
                   d > 20 ? '#d0d1e6' :
                   d > 15 ? '#a6bddb' :
@@ -104,7 +104,7 @@
         var acsDenver2021Layer = L.geoJSON(data,
                                            {style:style1,
                                            onEachFeature; function(feature, layer){
-                                          Layer.bindPopup("Percent Two or More Races: " + feature.properties.PCT_TWOORMORE_RACES + "");
+                                          Layer.bindPopup("Percent NativeAmerican: " + feature.properties.PCT_NATIVEAM + "2");
                                            
                                             }}).addTo(map);
         
