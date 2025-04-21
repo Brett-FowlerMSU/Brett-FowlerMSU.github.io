@@ -87,7 +87,7 @@
                   d > 5 ? '#3690c0' :
                   d > 3 ? '#0570b0' :
                   d > 1 ? '#034e7b' :
-                  '#FFEDAO' ;
+                  '#FFEDAA' ;
         styleReturn = {
           fillColor : answer,
           weight : 1,
@@ -103,8 +103,8 @@
       $.getJSON('./acs_denver_2021.geojson', function(data) {
         var acsDenver2021Layer = L.geoJSON(data,
                                            {style:style1,
-                                           onEachFeature; function(feature, layer){
-                                          Layer.bindPopup("Percent NativeAmerican: " + feature.properties.PCT_NATIVEAM + "2");
+                                           onEachFeature: function(feature, layer){
+                                          layer.bindPopup("Percent NativeAmerican: " + feature.properties.PCT_NATIVEAM + "2");
                                            
                                             }}).addTo(map);
         
@@ -129,9 +129,7 @@
     <p>Data from <a href="https://opendata-geospatialdenver.hub.arcgis.com/maps/619c7f836b6e4188b0e0f0458aecba26">Denver Open Data Catalog</a></p>
   </div>
 
-  <div id="map"></div>
-</body>
-</html>
+
   <div id="map"></div>
 </body>
 </html>
